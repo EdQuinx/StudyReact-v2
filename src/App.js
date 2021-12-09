@@ -7,7 +7,7 @@ import "assets/styles/tailwind.css";
 import * as actions from './store/actions/auth';
 // layouts
 
-import Admin from "layouts/Admin.js";
+import Admin from "layouts/Admin";
 
 // views without layouts
 import { AppWrapper } from './state';
@@ -25,15 +25,11 @@ class App extends Component {
       <AppWrapper>
         <Router>
           <Switch>
-          <Route path="/login" render={() => (
-              <Login {...this.props}>
-                <BaseRouter />
-              </Login>
+            <Route path="/login" render={() => (
+              <Login {...this.props} />
             )} />
             <Route path="/register" render={() => (
-              <Register {...this.props}>
-                <BaseRouter />
-              </Register>
+              <Register {...this.props} />
             )} />
             <Route path="*" render={() => (
               <Admin {...this.props}>

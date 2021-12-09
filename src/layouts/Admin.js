@@ -13,7 +13,7 @@ import Spin from "components/Spinners/Spin";
 import Login from "views/auth/Login";
 
 const Admin = (props) => {
-  
+
   return (
     props.loading ?
       <Spin />
@@ -23,9 +23,10 @@ const Admin = (props) => {
           <Sidebar />
           <div className="relative md:ml-64 bg-blueGray-100">
             <AdminNavbar />
-            {/* Header */}
-            <HeaderStats />
+            <div className="relative bg-lightBlue-600 pb-32 pt-20">
+            </div>
             <div className="px-4 md:px-10 mx-auto w-full -m-24">
+              {props.children}
               <FooterAdmin />
             </div>
           </div>

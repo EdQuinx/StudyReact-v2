@@ -1,13 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Admin from "layouts/Admin";
-import Login from "views/auth/Login";
-import Register from "views/auth/Register";
+import Dashboard from "views/admin/Dashboard.js";
+
 const BaseRouter = () => (
     <Switch>
-        <Route exact path="/" component={Admin} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
+        <Route path="*" component={Dashboard} />
     </Switch>
 );
 

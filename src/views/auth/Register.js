@@ -4,10 +4,13 @@ import Spin from "components/Spinners/Spin";
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth';
+import { Link, useHistory } from "react-router-dom";
 // components
 
 
 const Register = (props) => {
+
+  const history = useHistory()
 
   const [dataRegister, setDataRegister] = useState({
     "fullname": "",
@@ -32,6 +35,9 @@ const Register = (props) => {
   useEffect(() => {
     if (props.error) {
       props.resetError();
+    }
+    if (props?.isAuthenticated) {
+      history.push("/")
     }
   }, [props])
 
@@ -198,7 +204,7 @@ const Register = (props) => {
           </main>
         </>
         :
-        props.history.push("/")
+        <React.Fragment></React.Fragment>
   );
 }
 
