@@ -10,18 +10,6 @@ import Navbar from "components/Navbars/AuthNavbar";
 const Login = (props) => {
 
 	const history = useHistory()
-	
-	const [datalogin, setDatalogin] = useState({
-		"username": "",
-		"password": "",
-	})
-
-	const handleChangedata = (e) => {
-		setDatalogin({
-			...datalogin,
-			[e.target.name]: e.target.value.trim()
-		})
-	}
 
 	useEffect(() => {
 		if (props.error) {
@@ -35,7 +23,12 @@ const Login = (props) => {
 
 	const handleLogin = (e) => {
 		e.preventDefault();
-		props.onAuth(datalogin.username, datalogin.password)
+		props.onAuth(refs.username.current.value, refs.password.current.value)
+	}
+
+	const refs = {
+		username: React.createRef(),
+		password: React.createRef(),
 	}
 
 	return (
@@ -68,7 +61,7 @@ const Login = (props) => {
 												</div>
 												<hr className="mt-6 border-b-1 border-blueGray-300" />
 
-												<form>
+												<form onSubmit={handleLogin}>
 													<div className="relative w-full mb-3">
 														<label
 															className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -80,7 +73,7 @@ const Login = (props) => {
 															type="username" name="username"
 															id="username"
 															className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-															placeholder="Tên đăng nhập" onChange={handleChangedata}
+															placeholder="Tên đăng nhập" required ref={refs.username}
 														/>
 													</div>
 
@@ -95,14 +88,15 @@ const Login = (props) => {
 															type="password" name="password"
 															id="password"
 															className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-															placeholder="Mật khẩu" onChange={handleChangedata}
+															placeholder="Mật khẩu" required ref={refs.password}
 														/>
 													</div>
 
 													<div className="text-center mt-6">
 														<button
 															className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-															onClick={handleLogin}
+															// onClick={handleLogin}
+															type="submit"
 														>
 															Đăng nhập
 														</button>
