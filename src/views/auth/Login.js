@@ -31,6 +31,8 @@ const Login = (props) => {
 		password: React.createRef(),
 	}
 
+	const formLogin = React.createRef()
+
 	return (
 		props.loading ?
 			<Spin />
