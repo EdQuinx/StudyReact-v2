@@ -14,6 +14,7 @@ import { AppWrapper } from './state';
 import BaseRouter from "./route";
 import Login from "views/auth/Login";
 import Register from "views/auth/Register";
+import ChatLayout from "layouts/Chat";
 
 class App extends Component {
   componentDidMount() {
@@ -25,11 +26,14 @@ class App extends Component {
       <AppWrapper>
         <Router>
           <Switch>
-            <Route path="/login" render={() => (
+            <Route exact path="/login" render={() => (
               <Login {...this.props} />
             )} />
-            <Route path="/register" render={() => (
+            <Route exact path="/register" render={() => (
               <Register {...this.props} />
+            )} />
+            <Route exact path="/chat" render={() => (
+              <ChatLayout {...this.props} />
             )} />
             <Route path="*" render={() => (
               <Admin {...this.props}>
