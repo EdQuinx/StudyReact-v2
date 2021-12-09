@@ -1,6 +1,6 @@
 import React from "react";
 
-const Alert = (message) => {
+const Alert = ({message}) => {
   const [showAlert, setShowAlert] = React.useState(true);
   return (
     <>

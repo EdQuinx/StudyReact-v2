@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createPopper } from "@popperjs/core";
 
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth';
 
+import * as api from 'api'
+import axios from "axios";
+import { useAppContext } from "state";
+
 const UserDropdown = (props) => {
 	// dropdown props
-	const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
+	const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
 	const btnDropdownRef = React.createRef();
 	const popoverDropdownRef = React.createRef();
 	const openDropdownPopover = () => {
@@ -18,6 +22,32 @@ const UserDropdown = (props) => {
 	const closeDropdownPopover = () => {
 		setDropdownPopoverShow(false);
 	};
+
+	const { uinfo, igroups, wgroups, notisocket } = useAppContext()
+
+    const [userinfo, setUserinfo] = uinfo
+    const [ingroups, setIngroups] = igroups
+    const [wtgroups, setWtgroups] = wgroups
+    const [socketnoti, setSocketnoti] = notisocket
+
+	const handleGetUserInfo = () => {
+        setUserinfo(null)
+        axios.get(api.api_user_info, {
+            params: {
+                username: props.username,
+                token: props.token
+            }
+        }).then(res => res.data)
+            .then(res => {
+				console.log("info user:", res)
+                setUserinfo(res)
+            })
+    }
+
+	useEffect(() => {
+        handleGetUserInfo()
+
+    }, []);
 
 	return (
 		<>
@@ -32,10 +62,9 @@ const UserDropdown = (props) => {
 			>
 				<div className="items-center flex">
 					<span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-						<img
-							alt="..."
+						<img alt="..."
 							className="w-full rounded-full align-middle border-none shadow-lg"
-							src={require("assets/img/team-1-800x800.jpg").default}
+							src={userinfo?.avatar === "" ? require("assets/img/avatar.png").default : userinfo?.avatar}
 						/>
 					</span>
 				</div>
@@ -75,14 +104,12 @@ const UserDropdown = (props) => {
 					Something else here
 				</a>
 				<div className="h-0 my-2 border border-solid border-blueGray-100" />
-				<a
-					href="#pablo"
-					className={
+				<a className={
 						"text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
 					}
-					onClick={(e) => e.preventDefault()}
+					onClick={() => props.logout()}
 				>
-					Seprated link
+					Đăng xuất
 				</a>
 			</div>
 		</>
