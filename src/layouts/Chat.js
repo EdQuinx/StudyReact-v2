@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // views
@@ -7,6 +7,16 @@ import Login from "views/auth/Login";
 
 const ChatLayout = (props) => {
 
+    const messageEl = useRef(null);
+
+    useEffect(() => {
+        if (messageEl) {
+            messageEl.current.addEventListener('DOMNodeInserted', event => {
+                const { currentTarget: target } = event;
+                target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
+            });
+        }
+    }, [messageEl])
     return (
         props.loading ?
             <Spin />
@@ -107,7 +117,7 @@ const ChatLayout = (props) => {
                                 </a>
                             </div>
                         </div>
-                        <div className="p-4 flex-1 overflow-auto max-h-1/2">
+                        <div className="p-4 flex-1 overflow-auto max-h-1/2" ref={messageEl}>
                             {
                                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((val) => (
                                     <div className="flex justify-start mb-5">
