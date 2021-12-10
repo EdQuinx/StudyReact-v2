@@ -8,13 +8,14 @@ import * as actions from './store/actions/auth';
 // layouts
 
 import Admin from "layouts/Admin";
-
+import ChatLayout from "layouts/Chat";
 // views without layouts
 import { AppWrapper } from './state';
 import BaseRouter from "./route";
 import Login from "views/auth/Login";
 import Register from "views/auth/Register";
-import ChatLayout from "layouts/Chat";
+
+import Profile from "views/Profile";
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,9 @@ class App extends Component {
       <AppWrapper>
         <Router>
           <Switch>
+            <Route exact path="/profile" render={() => (
+              <Profile {...this.props}/>
+            )} />
             <Route exact path="/login" render={() => (
               <Login {...this.props} />
             )} />

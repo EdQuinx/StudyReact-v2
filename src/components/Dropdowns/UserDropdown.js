@@ -7,6 +7,7 @@ import * as actions from '../../store/actions/auth';
 import * as api from 'api'
 import axios from "axios";
 import { useAppContext } from "state";
+import { Link } from "react-router-dom";
 
 const UserDropdown = (props) => {
 	// dropdown props
@@ -25,29 +26,29 @@ const UserDropdown = (props) => {
 
 	const { uinfo, igroups, wgroups, notisocket } = useAppContext()
 
-    const [userinfo, setUserinfo] = uinfo
-    const [ingroups, setIngroups] = igroups
-    const [wtgroups, setWtgroups] = wgroups
-    const [socketnoti, setSocketnoti] = notisocket
+	const [userinfo, setUserinfo] = uinfo
+	const [ingroups, setIngroups] = igroups
+	const [wtgroups, setWtgroups] = wgroups
+	const [socketnoti, setSocketnoti] = notisocket
 
 	const handleGetUserInfo = () => {
-        setUserinfo(null)
-        axios.get(api.api_user_info, {
-            params: {
-                username: props.username,
-                token: props.token
-            }
-        }).then(res => res.data)
-            .then(res => {
+		setUserinfo(null)
+		axios.get(api.api_user_info, {
+			params: {
+				username: props.username,
+				token: props.token
+			}
+		}).then(res => res.data)
+			.then(res => {
 				console.log("info user:", res)
-                setUserinfo(res)
-            })
-    }
+				setUserinfo(res)
+			})
+	}
 
 	useEffect(() => {
-        handleGetUserInfo()
+		handleGetUserInfo()
 
-    }, []);
+	}, []);
 
 	return (
 		<>
@@ -70,42 +71,44 @@ const UserDropdown = (props) => {
 				</div>
 			</a>
 			<div
+
 				ref={popoverDropdownRef}
 				className={
 					(dropdownPopoverShow ? "block " : "hidden ") +
-					"bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+					"absolute right-0 w-48 py-2 mt-2 bg-white bg-gray-100 bg-lightBlue-100 rounded-md shadow-xl"
 				}
 			>
+				<Link
+					to="/profile"
+					className={
+						"block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-blue-400 transform hover:text-white"
+					}
+				>
+					Thông tin cá nhân
+				</Link>
 				<a
 					href="#pablo"
 					className={
-						"text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+						"block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-blue-400 transform hover:text-white"
 					}
 					onClick={(e) => e.preventDefault()}
 				>
-					Action
+					Chỉnh sửa thông tin
 				</a>
 				<a
 					href="#pablo"
 					className={
-						"text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-					}
-					onClick={(e) => e.preventDefault()}
-				>
-					Another action
-				</a>
-				<a
-					href="#pablo"
-					className={
-						"text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+						"block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-blue-400 transform hover:text-white"
 					}
 					onClick={(e) => e.preventDefault()}
 				>
 					Something else here
 				</a>
-				<div className="h-0 my-2 border border-solid border-blueGray-100" />
-				<a className={
-						"text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+				<div className="h-0 my-2 border border-solid border-blueGray-100"></div>
+				<a
+					href=""
+					className={
+						"block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 transform hover:text-white"
 					}
 					onClick={() => props.logout()}
 				>

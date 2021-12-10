@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth';

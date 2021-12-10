@@ -4,7 +4,7 @@ import Spin from "components/Spinners/Spin";
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // components
 
 

@@ -4,7 +4,7 @@ const Alert = ({message}) => {
   const [showAlert, setShowAlert] = React.useState(true);
   return (
     <>
-      <div className="bg-gray-200 relative text-gray-600 py-3 px-3 rounded-lg">
+      <div className="h-24 w-24 bg-white rounded-lg shadow-xl transform hover:translate-y-48 transition-transform ease-in-out duration-1000">
         A simple secondary alert—check it out!
       </div>
     </>
