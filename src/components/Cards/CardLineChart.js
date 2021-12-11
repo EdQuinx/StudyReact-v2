@@ -1,34 +1,19 @@
 import React from "react";
 import Chart from "chart.js";
 
-export default function CardLineChart() {
+export default function CardLineChart({ label, data, number }) {
   React.useEffect(() => {
     var config = {
       type: "line",
       data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
+        labels: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10'],
         datasets: [
           {
-            label: new Date().getFullYear(),
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
-            fill: false,
-          },
-          {
-            label: new Date().getFullYear() - 1,
+            label: label,
             fill: false,
             backgroundColor: "#fff",
             borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
+            data: data,
           },
         ],
       },
@@ -48,7 +33,7 @@ export default function CardLineChart() {
           position: "bottom",
         },
         tooltips: {
-          mode: "index",
+          mode: "",
           intersect: false,
         },
         hover: {
@@ -103,7 +88,7 @@ export default function CardLineChart() {
         },
       },
     };
-    var ctx = document.getElementById("line-chart").getContext("2d");
+    var ctx = document.getElementById(`line-chart-${number}`).getContext("2d");
     window.myLine = new Chart(ctx, config);
   }, []);
   return (
@@ -112,17 +97,14 @@ export default function CardLineChart() {
         <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1">
-              <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
-                Overview
-              </h6>
-              <h2 className="text-white text-xl font-semibold">Sales value</h2>
+              <h2 className="text-white text-xl font-semibold">Thống kê điểm môn: {label}</h2>
             </div>
           </div>
         </div>
         <div className="p-4 flex-auto">
           {/* Chart */}
           <div className="relative h-350-px">
-            <canvas id="line-chart"></canvas>
+            <canvas id={`line-chart-${number}`}></canvas>
           </div>
         </div>
       </div>

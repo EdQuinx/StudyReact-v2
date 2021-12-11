@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 
 // views
 import Spin from "components/Spinners/Spin";
@@ -13,22 +13,19 @@ const ChatLayout = (props) => {
             :
             props.isAuthenticated ?
                 <main className="flex max-h-screen">
-                    <section className="flex-col flex-none w-1/3">
+                    <section className="flex-col flex-none w-1/3" style={{ maxHeight: "100vh" }}>
                         <div className="header p-4 flex flex-row justify-between items-center flex-none">
-                            <p className="text-md font-bold hidden md:block group-hover:block">Trao đổi nhóm</p>
-                            <a title="Tạo nhóm" className="block rounded-full hover:bg-gray-700 bg-gray-800 w-10 h-10 p-2 hidden md:block group-hover:block">
-                                <svg viewBox="0 0 24 24" className="w-full h-full fill-current">
-                                    <path
-                                        d="M6.3 12.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM8 16h2.59l9-9L17 4.41l-9 9V16zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h6a1 1 0 0 1 0 2H4v14h14v-6z" />
-                                </svg>
+                            <Link to="/" className="text-md font-bold hidden md:block group-hover:block">Trao đổi nhóm</Link>
+                            <a title="Tạo nhóm" className="block rounded-full hover:bg-gray-700 hover:text-white w-10 h-10 p-2 hidden md:block group-hover:block">
+                                <i className={"fa fa-comments"}></i>
                             </a>
                         </div>
                         <div className="search-box p-4 flex-none">
                             <form onsubmit="">
                                 <div className="relative">
                                     <label>
-                                        <input className="rounded-full py-2 pr-6 pl-10 w-full border border-gray-800 focus:border-gray-700 bg-gray-800 focus:bg-gray-900 focus:outline-none text-gray-200 focus:shadow-md transition duration-300 ease-in"
-                                            type="text" value="" placeholder="Tìm nhóm" />
+                                        <input className="rounded-full py-2 pr-6 pl-10 w-full border border-gray-800 focus:border-gray-700 focus:bg-gray-900 focus:text-gray-200 focus:outline-none text-gray-200 focus:shadow-md transition duration-300 ease-in"
+                                            type="text" placeholder="Tìm nhóm" />
                                         <span className="absolute top-0 left-0 mt-2 ml-3 inline-block">
                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                                 width="24" height="24"
@@ -40,33 +37,18 @@ const ChatLayout = (props) => {
                             </form>
                         </div>
 
-                        <div className="contacts p-2 flex-1 overflow-y-scroll">
-                            <div className="flex justify-between items-center p-3 hover:bg-gray-800 rounded-lg relative">
+                        <div className="contacts p-2 flex-1">
+                            <div className="flex justify-between items-center p-3 hover:text-white hover:bg-gray-800 rounded-lg relative">
                                 <div className="w-16 relative flex-none">
                                     <img className="shadow-md rounded-full w-full h-full object-cover" src="https://randomuser.me/api/portraits/women/61.jpg"
                                         alt=""
                                     />
                                 </div>
-                                <div className="flex-1">
+                                <div className="flex-1 ml-5 invisible md:visible">
                                     <p>Tên nhóm</p>
-                                    <div className="flex items-center text-sm text-gray-600">
+                                    <div className="flex items-center text-sm">
                                         <div className="min-w-0">
                                             <p className="truncate">Tên trưởng nhóm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-center p-3 hover:bg-gray-800 rounded-lg relative">
-                                <div className="w-16 relative flex-none">
-                                    <img className="shadow-md rounded-full w-full h-full object-cover" src="https://randomuser.me/api/portraits/women/61.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                                <div className="flex-1">
-                                    <p>Tên nhóm 22222</p>
-                                    <div className="flex items-center text-sm text-gray-600">
-                                        <div className="min-w-0">
-                                            <p className="truncate">Tên trưởng nhóm 22222222222</p>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +56,7 @@ const ChatLayout = (props) => {
                         </div>
                     </section>
                     <section className="flex flex-col flex-1 max-h-screen overfolow" style={{ maxHeight: "100vh" }}>
-                        <div className="px-6 py-4 flex justify-between items-center shadow overflow-y-scroll">
+                        <div className="px-6 py-4 flex justify-between items-center shadow">
                             <div className="flex">
                                 <div className="w-12 mr-4 relative flex flex-shrink-0">
                                     <img className="shadow-md rounded-full w-full h-full object-cover"
@@ -111,15 +93,20 @@ const ChatLayout = (props) => {
                             {
                                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((val) => (
                                     <div className="flex justify-start mb-5">
-                                        <div className="w-10 relative flex flex-shrink-0">
-                                            <img className="shadow-md rounded-full w-full h-full object-cover"
+                                        <div className="w-10 relative">
+                                            <img className="shadow-md rounded-full w-full"
                                                 src="https://randomuser.me/api/portraits/women/33.jpg"
                                                 alt=""
                                             />
                                         </div>
                                         <div className="messages text-sm text-gray-700 grid grid-flow-row gap-2">
+                                            <p className="px-2">Tên ng gui</p>
                                             <div className="flex items-center group">
-                                                <p className="px-6 py-3 rounded-t-full rounded-r-full bg-gray-800 max-w-xs lg:max-w-md text-gray-200">Hey! How are you?</p>
+                                                <p className="px-6 py-3 rounded-lg bg-gray-800 max-w-xs lg:max-w-md text-gray-200">
+                                                Hey! How are you jasgdjasdasdhgfasdgfsdadghesdfgh?Hey! How are you jasgdjasdasdhgfasdgfsdadghesdfgh?
+                                                Hey! How are you jasgdjasdasdhgfasdgfsdadghesdfgh?Hey! How are you jasgdjasdasdhgfasdgfsdadghesdfgh?
+                                                Hey! How are you jasgdjasdasdhgfasdgfsdadghesdfgh?Hey! How are you jasgdjasdasdhgfasdgfsdadghesdfgh?
+                                                </p>
 
                                             </div>
                                         </div>
