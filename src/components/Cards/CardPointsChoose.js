@@ -46,9 +46,10 @@ export default function CardPointsChoose({
                                             dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
                                         }}
                                     >
-                                       <i className="fa fa-angle-down"> </i> &nbsp; Môn: {currentsubject}
+                                       Môn: {currentsubject} &nbsp; <i className="fa fa-angle-down"> </i>
                                     </a>
                                     <div
+                                    
                                         ref={popoverDropdownRef}
                                         className={
                                             (dropdownPopoverShow ? "block " : "hidden ") +
@@ -64,6 +65,7 @@ export default function CardPointsChoose({
                                                             closeDropdownPopover()
                                                         }
                                                     }
+                                                href="#"
                                                 >
                                                     {val.subject}
                                                 </a>

@@ -105,7 +105,7 @@ const UserDropdown = (props) => {
 				>
 					Something else here
 				</a>
-				<div className="h-0 my-2 border border-solid border-blueGray-100"></div>
+				<div className="h-0 my-2 border border-solid border-black-100"></div>
 				<a
 					href=""
 					className={

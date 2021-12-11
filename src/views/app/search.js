@@ -82,7 +82,7 @@ function Search(props) {
                                 title: "Xem thêm",
                                 key: "username",
                                 render: (val) => (
-                                    <Link to={`/user/${val.username}`} className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150">Xem thêm</Link>
+                                    <Link to={`/user/${val.username}`} className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold text-1x1 uppercase px-6 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150">Xem thêm</Link>
                                 )
                             }
                         ]}
