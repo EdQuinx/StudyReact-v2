@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 // components
 
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import TableDropdown from "components/Dropdowns/TableDropdown.js"
 
 export default function TableNormal({ color, title, dataSource, column }) {
+    const [columnkey, setColumnkey] = useState([])
+
+    useEffect(() => {
+        console.log("keys:", column.map(vl => vl.key))
+        setColumnkey(column.map(vl => vl.key))
+    }, []);
+
     return (
         <>
             <div
@@ -54,16 +61,30 @@ export default function TableNormal({ color, title, dataSource, column }) {
                                 dataSource.map((val, index) => (
                                     <tr key={`table-tr-${index}`}>
                                         {
-                                            Object.keys(val).map((val0, index0) => (
+                                            column.map((cl, index) => (
                                                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                                     {
-                                                        "render" in column.find(raw => raw.key === val0) ?
-                                                            column.find(raw => raw.key === val0).render(val)
+                                                        cl.hasOwnProperty("render") ?
+                                                            cl.render(val)
                                                             :
-                                                            val[val0]
+                                                            val[cl.key]
                                                     }
                                                 </th>
                                             ))
+                                            /* Object.keys(val).map((val0, index0) => {
+                                                if (column.find(raw => raw.key === val0)) {
+                                                    return (
+                                                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                                            {
+                                                                column.find(raw => raw.key === val0).hasOwnProperty("render") ?
+                                                                    column.find(raw => raw.key === val0).render(val)
+                                                                    :
+                                                                    val[val0]
+                                                            }
+                                                        </th>
+                                                    )
+                                                }
+                                            }) */
                                         }
 
                                     </tr>

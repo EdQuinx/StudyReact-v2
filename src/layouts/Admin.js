@@ -25,7 +25,7 @@ const Admin = (props) => {
           <div className="relative md:ml-64 bg-blueGray-100">
             <AdminNavbar />
             <div className="relative bg-lightBlue-600 pb-32 pt-20">
-    
+
             </div>
             <div className="px-4 md:px-10 mx-auto w-full -m-24">
               {props.children}
