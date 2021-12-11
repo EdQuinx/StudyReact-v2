@@ -28,7 +28,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/profile" render={() => (
-              <Profile {...this.props}/>
+              <Profile {...this.props} />
             )} />
             <Route exact path="/login" render={() => (
               <Login {...this.props} />

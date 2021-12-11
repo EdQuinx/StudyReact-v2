@@ -7,6 +7,8 @@ import Profile from "views/Profile";
 const BaseRouter = () => (
     <Switch>
         <Route path="*" component={Dashboard} />
+        <Route exact path="/profile" component={Profile} />
+
     </Switch>
 );
 

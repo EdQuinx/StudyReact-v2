@@ -46,8 +46,9 @@ const UserDropdown = (props) => {
 	}
 
 	useEffect(() => {
-		handleGetUserInfo()
-
+		if (props.token != null) {
+			handleGetUserInfo()
+		}
 	}, []);
 
 	return (
