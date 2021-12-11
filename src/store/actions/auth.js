@@ -183,7 +183,7 @@ export const getInfostatus = (token, username, userId) => {
         })
         .then(res => res.data)
         .then(res => {
-            if ("inGroups" in res)
+            if ("inGroups" in res && typeof(res) === "object")
             {
                 dispatch(updateInfo(res))
             } else {

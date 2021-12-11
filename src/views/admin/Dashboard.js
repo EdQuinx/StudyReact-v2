@@ -40,7 +40,6 @@ const Dashboard = (props) => {
 			})
 				.then(res => res.data)
 				.then(res => {
-					console.log("check res:", res)
 					if (!Array.isArray(res)) return
 					if (res.length > 0) {
 						setDataResult(old => [...old, {
