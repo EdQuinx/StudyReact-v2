@@ -59,48 +59,49 @@ const Dashboard = (props) => {
 			:
 			props.isAuthenticated ?
 				<React.Fragment>
-					<div className="px-4 md:px-10 mx-auto w-full mb-4">
-						<div>
-							{/* Card stats */}
-							<div className="flex flex-wrap">
-								<div className="w-1/3 lg:w-full xl:w-1/3 px-4">
-									<CardPointsChoose
-										statSubtitle="THỐNG KÊ ĐIỂM"
-										statArrow="up"
-										statPercent="3.48"
-										statPercentColor="text-emerald-500"
-										statDescripiron="Thống kê điểm từ bài thi hệ thống"
-										statIconName="far fa-chart-bar"
-										statIconColor="bg-red-500"
-										subjects={dataResult}
-										currentsubject={currentSub?.subject}
-										action={setCurrentSub}
-									/>
-								</div>
-								<div className="w-1/3 lg:w-full xl:w-1/3 px-4">
-									<CardLink
-										statSubtitle="NHÓM HỌC CHUNG"
-										statTitle="2,356"
-										statArrow="down"
-										statPercent="3.48"
-										statPercentColor="text-red-500"
-										statDescripiron="Tìm nhóm"
-										statIconName="fas fa-comments"
-										statIconColor="bg-orange-500"
-										href="/chat"
-									/>
-								</div>
-								<div className="w-1/3 lg:w-full xl:w-1/3 px-4">
-									<CardLink
-										statSubtitle="Thành viên"
-										statTitle="924"
-										statArrow="down"
-										statPercent="1.10"
-										statPercentColor="text-orange-500"
-										statDescripiron="Tìm kiếm bạn bè ở thanh tìm kiếm"
-										statIconName="fas fa-users"
-										statIconColor="bg-pink-500"
-									/>
+					<div className="relative mb-10">
+						<div className="px-4 md:px-10 mx-auto w-full">
+							<div>
+								<div className="flex flex-wrap">
+									<div className="w-full lg:w-6/12 xl:w-auto px-4">
+										<CardPointsChoose
+											statSubtitle="THỐNG KÊ ĐIỂM"
+											statArrow="up"
+											statPercent="3.48"
+											statPercentColor="text-emerald-500"
+											statDescripiron="Thống kê điểm từ bài thi hệ thống"
+											statIconName="far fa-chart-bar"
+											statIconColor="bg-red-500"
+											subjects={dataResult}
+											currentsubject={currentSub?.subject}
+											action={setCurrentSub}
+										/>
+									</div>
+									<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+										<CardLink
+											statSubtitle="NHÓM HỌC CHUNG"
+											statTitle="2,356"
+											statArrow="down"
+											statPercent="3.48"
+											statPercentColor="text-red-500"
+											statDescripiron="Tìm nhóm"
+											statIconName="fas fa-comments"
+											statIconColor="bg-orange-500"
+											href="/chat"
+										/>
+									</div>
+									<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+										<CardLink
+											statSubtitle="Thành viên"
+											statTitle="924"
+											statArrow="down"
+											statPercent="1.10"
+											statPercentColor="text-orange-500"
+											statDescripiron="Tìm kiếm bạn bè ở thanh tìm kiếm"
+											statIconName="fas fa-users"
+											statIconColor="bg-pink-500"
+										/>
+									</div>
 								</div>
 							</div>
 						</div>

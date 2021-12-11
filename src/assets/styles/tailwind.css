@@ -1295,16 +1295,6 @@ select {
   border-top-right-radius: 0.5rem;
 }
 
-.rounded-t-full {
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
-}
-
-.rounded-r-full {
-  border-top-right-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-}
-
 .border-solid {
   border-style: solid;
 }
@@ -1728,6 +1718,10 @@ select {
   margin-bottom: 1.25rem;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -1932,10 +1926,6 @@ select {
 
 .overflow-x-hidden {
   overflow-x: hidden;
-}
-
-.overflow-y-scroll {
-  overflow-y: scroll;
 }
 
 .p-2 {
@@ -2428,11 +2418,6 @@ select {
   color: rgba(212, 212, 216, var(--tw-text-opacity));
 }
 
-.text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgba(82, 82, 91, var(--tw-text-opacity));
-}
-
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgba(63, 63, 70, var(--tw-text-opacity));
@@ -2508,6 +2493,11 @@ select {
   color: rgba(30, 41, 59, var(--tw-text-opacity));
 }
 
+.focus\:text-gray-200:focus {
+  --tw-text-opacity: 1;
+  color: rgba(228, 228, 231, var(--tw-text-opacity));
+}
+
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2533,6 +2523,10 @@ select {
 
 .align-middle {
   vertical-align: middle;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .whitespace-nowrap {
@@ -2921,6 +2915,14 @@ select {
     text-align: left;
   }
 
+  .md\:visible {
+    visibility: visible;
+  }
+
+  .md\:w-1 {
+    width: 0.25rem;
+  }
+
   .md\:w-64 {
     width: 16rem;
   }
@@ -3078,6 +3080,10 @@ select {
   .lg\:hover\:text-blueGray-200:hover {
     --tw-text-opacity: 1;
     color: rgba(226, 232, 240, var(--tw-text-opacity));
+  }
+
+  .lg\:w-1 {
+    width: 0.25rem;
   }
 
   .lg\:w-auto {
